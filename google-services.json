@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "844471774726",
+    "project_id": "wazzapp-d0ae8",
+    "storage_bucket": "wazzapp-d0ae8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844471774726:android:6e393d280cb27073339d87",
+        "android_client_info": {
+          "package_name": "com.company.wazzApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_ym9S8lgbDiD-qvo4WfWhWFrj6S-zZgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
