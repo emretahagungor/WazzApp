@@ -20,6 +20,7 @@ import { FIREBASE_AUTH, FIREBASE_DB } from "../../firebaseConfig";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Dialog, TextInput, Button, Portal } from "react-native-paper";
 import { onAuthStateChanged } from "firebase/auth";
+import Loading from "../components/Loading";
 
 const ChatsScreen = () => {
   const navigation = useNavigation();
@@ -29,6 +30,8 @@ const ChatsScreen = () => {
   const [email, setemail] = useState("");
   const [userEmail, setuserEmail] = useState("");
   const [dialog, setdialog] = useState([]);
+  const [loading, setLoading] = useState(true)
+  
 
   useEffect(() => {
     //firestore'dan e-mail ve displayname getir
@@ -61,8 +64,12 @@ const ChatsScreen = () => {
     const q = query(ref, where("chat", "array-contains", email));
     onSnapshot(q, (querySnapShot) => {
       setdialog(querySnapShot.docs);
+      setLoading(false)
     });
   }, [email]);
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -100,6 +107,7 @@ const ChatsScreen = () => {
           style={{ alignItems: "center", justifyContent: "center" }}
           name="add"
           size={58}
+          color={'#68A7AD'}
         />
       </TouchableOpacity>
     </SafeAreaView>
@@ -113,13 +121,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 20,
     right: 20,
-    backgroundColor: "blue",
+    backgroundColor: "white",
     width: 60,
     height: 60,
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
     elevation: 5,
+    borderWidth:2,
+    borderColor:'#68A7AD'
   },
   buttonText: {
     color: "white",

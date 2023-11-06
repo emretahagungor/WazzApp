@@ -11,6 +11,7 @@ import { FIREBASE_AUTH } from "./firebaseConfig";
 import {onAuthStateChanged} from 'firebase/auth'
 import LogInScreen from "./src/screens/LoginScreen";
 import {Provider} from 'react-native-paper'
+import Loading from "./src/components/Loading";
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const Auth = FIREBASE_AUTH;
@@ -25,7 +26,7 @@ const TabScreens = () => {
           tabBarLabel: "Chats",
 
           tabBarIcon: ({ color }) => (
-            <Ionicons name="chatbubbles-outline" color={color} size={26} />
+            <Ionicons name="chatbubbles-outline" color={'#68A7AD'} size={26} />
           ),
         }}
       />
@@ -35,7 +36,7 @@ const TabScreens = () => {
         options={{
           tabBarLabel: "Settings",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="hammer-outline" color={color} size={26} />
+            <Ionicons name="hammer-outline" color={'#68A7AD'} size={26} />
           ),
         }}
       />
@@ -57,7 +58,7 @@ export default function App() {
     <NavigationContainer>
       <Provider>
       <Stack.Navigator
-        // initialRouteName="TabBar"
+        // initialRouteName="Loading"
        initialRouteName={user ? "TabBar" : 'Login'}
         screenOptions={{ headerShown: false }}
       >
@@ -65,6 +66,7 @@ export default function App() {
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="TabBar" component={TabScreens} />
         <Stack.Screen name="Dialogs" component={DialogScreen} />
+        <Stack.Screen name="Loading" component={Loading}/>
       </Stack.Navigator>
       </Provider>
     </NavigationContainer>
